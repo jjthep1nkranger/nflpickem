@@ -17,7 +17,16 @@ if (Meteor.isClient) {
     }
   });
 }
-
+ 	Template.leaderboard.events({
+		'click .player': function(){
+			var playerId = this._id;
+			Session.set('slectedPlayer', playerId);
+		}
+		'click .increment': function(){
+			var selectedPlayer = Session.get('selectedPlayer');
+			console.log(selectedPlayer);
+		}
+	});
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
